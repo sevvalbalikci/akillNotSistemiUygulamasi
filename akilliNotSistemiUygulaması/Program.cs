@@ -117,16 +117,37 @@ class Program
     static void OgrenciEkle()
     {
         int adet = SayiAl("Kaç öğrenci eklemek istiyorsunuz? ");
-
         if (adet <= 0)
         {
             Console.WriteLine("Geçersiz adet girişi! Lütfen pozitif bir sayı girin.");
             return;
         }
 
-        for (int y = 0; y < adet; y++)
+        void Listele()
         {
-            string tamAd = MetinAl("Öğrenci " + (y + 1) + "'in Adını ve Soyadını Giriniz : ");
+            if (ogrenciler.Count == 0)
+            {
+                Console.WriteLine("Henüz öğrenci yok.");
+                return;
+            }
+
+            Console.WriteLine("\n--- Kayıtlı Öğrenciler ---");
+            for (int i = 0; i < ogrenciler.Count; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + ogrenciler[i].AdSoyad + " (No: " + ogrenciler[i].Numara + ")");
+            }
+            Console.WriteLine();
+        }
+
+        string AdSoyadAl(int sira)
+        {
+            Listele();
+            return MetinAl("Öğrenci " + sira + "'in Adını ve Soyadını Giriniz : ");
+        }
+
+        for (int i = 1; i <= adet; i++)
+        {
+            string tamAd = AdSoyadAl(i);
 
             ogrenciler.Add(new Ogrenci
             {
@@ -137,6 +158,7 @@ class Program
             Console.WriteLine("Öğrenci No: " + (ogrenciNoSayaci - 1) + " olarak eklendi.");
         }
     }
+
 
     static void NotGir()
     {
@@ -251,19 +273,6 @@ class Program
                 ogr.AdSoyad, ogr.Vize, ogr.Final, ogr.Ortalama, ogr.HarfNotu, durum));
         }
         Console.WriteLine("---------------------------------------------------------------------------------------------");
-    }
-
-    static string NotHarfiniHesapla(double ortalama)
-    {
-        if (ortalama >= 90) return "AA";
-        else if (ortalama >= 85) return "BA";
-        else if (ortalama >= 80) return "BB";
-        else if (ortalama >= 75) return "CB";
-        else if (ortalama >= 70) return "CC";
-        else if (ortalama >= 65) return "DC";
-        else if (ortalama >= 60) return "DD";
-        else if (ortalama >= 50) return "FD";
-        else return "FF";
     }
 
     static void OgrenciIslemleri()
