@@ -114,7 +114,7 @@ class Program
         }
     }
 
-    static void OgrenciEkle(string name)
+    static void OgrenciEkle()
     {
         int adet = SayiAl("Kaç öğrenci eklemek istiyorsunuz? ");
 
