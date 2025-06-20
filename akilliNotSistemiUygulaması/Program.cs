@@ -67,7 +67,6 @@ class Program
             Console.Write("Öğrencinin Adını ve Soyadını Giriniz : ");
             string tamAd = Console.ReadLine();
 
-            //if (tamAd.Length<2) {
 
             bool gecerli = true;
             foreach (char c in tamAd)
